@@ -16,6 +16,8 @@
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
     "@mui/styles": "^5.14.15",
+    "@mui/x-charts": "^6.18.0",
+    "@mui/x-data-grid": "^6.18.0",
     "apexcharts": "^3.44.0",
     "next": "latest",
     "react": "latest",

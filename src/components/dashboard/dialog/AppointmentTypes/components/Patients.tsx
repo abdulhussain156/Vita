@@ -3,41 +3,22 @@ import { Box, Typography, Avatar } from "@mui/material";
 
 interface MyComponentProps {
   name: string;
-  title: string;
-  description: string;
+  details: string;
 }
-
 export default function MyComponent(props: MyComponentProps) {
   return (
     <Box
       sx={{
-        borderRadius: "15px",
-        backgroundColor: "#F5F5F5",
         display: "flex",
         flexDirection: "column",
-        padding: "0 9px 0 20px",
       }}
     >
-      <Typography
-        variant="body2"
-        sx={{
-          alignSelf: "end",
-          marginTop: "7px",
-          whiteSpace: "nowrap",
-        }}
-      >
-        19H
-      </Typography>
       <Box
         sx={{
-          alignSelf: "start",
           display: "flex",
-          width: "272px",
           maxWidth: "100%",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-          gap: "20px",
-          margin: "6px 0 27px",
+          alignItems: "center",
+          gap: "10px",
         }}
       >
         <Avatar
@@ -47,9 +28,16 @@ export default function MyComponent(props: MyComponentProps) {
         <Box
           sx={{ alignSelf: "start", display: "flex", flexDirection: "column" }}
         >
-          <Typography variant="h6">{props.name}</Typography>
-          <Typography variant="subtitle2">{props.title}</Typography>
-          <Typography variant="body2">{props.description}</Typography>
+          <Typography variant="subtitle1" color="primary.dark" fontWeight={500}>
+            {props.name}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="primary.dark"
+            sx={{ background: "#B9DDFF", borderRadius: "10px" }}
+          >
+            {props.details}
+          </Typography>
         </Box>
       </Box>
     </Box>

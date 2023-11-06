@@ -184,7 +184,7 @@ export default function PrimarySearchAppBar() {
 
           <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon color="secondary" />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"

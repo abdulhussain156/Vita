@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
-import { Box, Typography, Grid, Avatar } from "@mui/material";
-import RDVDoctorCard from "@/components/cards/RDVDoctorCard";
+import { Box, Typography, Grid, ButtonBase } from "@mui/material";
+import RDVDoctorCard from "@/components/cards/Doctor/RDVDoctorCard";
+import ImportantAppointmentDialog from "../dialog/ImportantAppointments/ImportantAppointmentDialog";
 const doctorData = [
   {
     name: "Toby Valerie",
@@ -14,14 +16,17 @@ const doctorData = [
   },
 ];
 const RDV = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
   return (
     <Box>
       <Typography variant="h4" color="secondary" gutterBottom>
         RDV important
       </Typography>
       <Box
-        display="flex"
-        gap={3}
+        onClick={handleClickOpen}
         sx={{
           p: 2,
           m: 2,
@@ -29,6 +34,7 @@ const RDV = () => {
           borderRadius: "10px",
           background: "#FFFFFF",
           boxShadow: "none",
+          cursor: "pointer",
         }}
       >
         <Grid container spacing={3}>
@@ -43,6 +49,7 @@ const RDV = () => {
           ))}
         </Grid>
       </Box>
+      <ImportantAppointmentDialog open={open} setOpen={setOpen} />
     </Box>
   );
 };

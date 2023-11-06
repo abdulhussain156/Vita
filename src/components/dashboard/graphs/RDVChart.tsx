@@ -2,12 +2,58 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { Box, Typography, Grid } from "@mui/material";
+import AppointmentTypes from "../dialog/AppointmentTypes/AppointmentTypes";
+
+const RDVChart = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  return (
+    <Box>
+      <Typography variant="h4" color="secondary" gutterBottom>
+        Type de RDV
+      </Typography>
+      <Box
+        id="chart"
+        onClick={handleClickOpen}
+        display="flex"
+        justifyContent="center"
+        sx={{
+          m: 2,
+          borderRadius: "10px",
+          background: "#FFFFFF",
+          boxShadow: "none",
+          cursor: "pointer",
+        }}
+      >
+        {typeof window !== "undefined" && (
+          <ReactApexChart
+            options={pieChartOptions}
+            series={pieChartData}
+            type="pie"
+            width="120%"
+          />
+        )}
+      </Box>
+      <AppointmentTypes open={open} setOpen={setOpen} />
+    </Box>
+  );
+};
+
+export default RDVChart;
 
 const pieChartOptions = {
-  labels: ["Pose Protheses", "Endodontie", "consultation"],
+  labels: [
+    "Pose Protheses",
+    "Endodontie",
+    "consultation",
+    "chirurgie",
+    "Pose d'Implants",
+  ],
   colors: ["#689fd1", "#81afd9", "#ccdfef"],
   chart: {
-    width: 200, // Set as a number, not a string
+    width: 300, // Set as a number, not a string
   },
   states: {
     hover: {
@@ -27,9 +73,10 @@ const pieChartOptions = {
     },
     formatter: (val: number, opts: any) => {
       const roundedValue = Math.round(val); // Round to the nearest whole number
-      return opts.w.config.labels[opts.seriesIndex] + ": " + roundedValue + "%";
+      return opts.w.config.labels[opts.seriesIndex] + " " + roundedValue + "%";
     },
   },
+
   plotOptions: {
     pie: {
       donut: {
@@ -50,38 +97,4 @@ const pieChartOptions = {
   },
 };
 
-const pieChartData = [63, 20, 15];
-
-// Total Spent Default
-
-const RDVChart = () => {
-  return (
-    <Box>
-      <Typography variant="h4" color="secondary" gutterBottom>
-        Type de RDV
-      </Typography>
-      <Box
-        id="chart"
-        sx={{
-          p: 1,
-          m: 2,
-          borderRadius: "10px",
-          background: "#FFFFFF",
-          boxShadow: "none",
-        }}
-      >
-        {typeof window !== "undefined" && (
-          <ReactApexChart
-            options={pieChartOptions}
-            series={pieChartData}
-            type="pie"
-            width="100%"
-            height="150%"
-          />
-        )}
-      </Box>
-    </Box>
-  );
-};
-
-export default RDVChart;
+const pieChartData = [20, 10, 23, 20, 15];
